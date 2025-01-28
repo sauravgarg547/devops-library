@@ -1,6 +1,6 @@
 // vars/pushDockerImage.groovy
 def call(String sourceImage, String targetImage) {
-    withCredentials([usernamePassword(credentialsId: 'dockerHubCreds', usernameVariable: 'dockerHubUser', passwordVariable: 'dockerHubPass')]) {
+    withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'dockerHubUser', passwordVariable: 'dockerHubPass')]) {
         sh """
             docker login -u ${dockerHubUser} -p ${dockerHubPass}
             docker tag ${sourceImage} ${dockerHubUser}/${targetImage}
